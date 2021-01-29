@@ -1,16 +1,18 @@
 package me.sig.framework.browser
 
 import io.github.bonigarcia.wdm.WebDriverManager
+import me.sig.framework.settings.BROWSER
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import java.util.concurrent.TimeUnit
 
-class BrowserFactory {
+object BrowserFactory {
 
-    private lateinit var driver: WebDriver
+    private val driver: WebDriver
 
-    fun createDriver(browserType: BrowserType): BrowserFactory {
+    init {
+        val browserType = BrowserType.valueOf(BROWSER)
         this.driver = when (browserType) {
             BrowserType.Firefox -> {
                 WebDriverManager.firefoxdriver().setup()
@@ -25,11 +27,14 @@ class BrowserFactory {
         }
         this.driver.manage().window().maximize()
         this.driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS)
-        return this
     }
 
     fun getDriverInstance(): WebDriver {
         return this.driver
+    }
+
+    fun closeDriverInstance() {
+        this.driver.quit()
     }
 
 }

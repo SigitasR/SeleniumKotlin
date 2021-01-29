@@ -9,7 +9,7 @@ class SwedPageTest : BaseWebTest() {
 
     @Test
     fun myTest() {
-        swedPage = SwedPage(getWebDriver())
+        swedPage = SwedPage()
 
         swedPage.openBaseUrl()
 

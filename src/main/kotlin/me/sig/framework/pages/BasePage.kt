@@ -1,11 +1,12 @@
 package me.sig.framework.pages
 
+import me.sig.framework.browser.BrowserFactory
 import me.sig.framework.settings.URL
 import org.openqa.selenium.WebDriver
 
-open class BasePage(driver: WebDriver) : BaseWebOperations(driver) {
+open class BasePage() : BaseWebOperations() {
     fun openUrl(url: String) {
-        this.driver.get(url)
+        BrowserFactory.getDriverInstance().get(url)
     }
 
     fun openBaseUrl() {

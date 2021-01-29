@@ -1,5 +1,6 @@
 package lt.swed.pages.calc
 
+import me.sig.framework.browser.BrowserFactory
 import me.sig.framework.pages.BasePage
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
@@ -8,7 +9,7 @@ import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 
 
-class SwedPage(driver: WebDriver) : BasePage(driver) {
+class SwedPage : BasePage() {
 
     @FindBy(css = "button[data-wt-label='Accept all cookies']")
     private lateinit var cookiesAgreementYesButton: WebElement
@@ -78,7 +79,7 @@ class SwedPage(driver: WebDriver) : BasePage(driver) {
     }
 
     private fun moveSlider(element: WebElement, xOffset: Int) {
-        val moveAction = Actions(driver)
+        val moveAction = Actions(BrowserFactory.getDriverInstance())
         moveAction.dragAndDropBy(element, xOffset, 0).release().build().perform()
     }
 
