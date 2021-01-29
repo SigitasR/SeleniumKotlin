@@ -21,6 +21,9 @@ dependencies {
 
 test {
     useTestNG()
+    options {
+        systemProperties(System.getProperties())
+    }
 }
 
 compileKotlin {
