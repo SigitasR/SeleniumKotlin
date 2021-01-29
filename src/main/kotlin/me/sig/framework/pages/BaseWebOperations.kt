@@ -1,5 +1,6 @@
 package me.sig.framework.pages
 
+import me.sig.framework.browser.isMacOs
 import me.sig.framework.settings.EXPLICIT_WAIT_TIMEOUT
 import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.Keys
@@ -69,7 +70,19 @@ open class BaseWebOperations(val driver: WebDriver) {
         waitForJavaScript()
         waitForElementToBeDisplayed(this)
         waitForElementToBeEnabled(this)
-        this.sendKeys(Keys.chord(Keys.COMMAND, "a"), Keys.BACK_SPACE)
+
+        if (isMacOs()) {
+            this.sendKeys(
+                Keys.chord(Keys.COMMAND, "a"),
+                Keys.BACK_SPACE
+            )
+        } else {
+            this.sendKeys(
+                Keys.chord(Keys.CONTROL, "a"),
+                Keys.BACK_SPACE
+            )
+        }
+
         this.sendKeys(text)
     }
 
