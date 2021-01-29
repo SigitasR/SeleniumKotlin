@@ -92,4 +92,3 @@ open class BaseWebOperations() {
     private fun createWait() = WebDriverWait(BrowserFactory.getDriverInstance(), EXPLICIT_WAIT_TIMEOUT)
 
 }
-

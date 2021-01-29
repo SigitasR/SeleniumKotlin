@@ -12,7 +12,10 @@ open class BaseWebTest {
     fun tearDown(result: ITestResult) {
 
         if (!result.isSuccess) {
-            ScreenshotUtil.takeScreenshot(BrowserFactory.getDriverInstance(), LocalDateTime.now().toString() + result.name)
+            ScreenshotUtil.takeScreenshot(
+                BrowserFactory.getDriverInstance(),
+                LocalDateTime.now().toString() + result.name
+            )
         }
 
         BrowserFactory.closeDriverInstance()
