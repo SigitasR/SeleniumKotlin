@@ -2,8 +2,6 @@ package lt.swed.pages.calc
 
 import me.sig.framework.browser.BrowserFactory
 import me.sig.framework.pages.BasePage
-import org.openqa.selenium.Keys
-import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
