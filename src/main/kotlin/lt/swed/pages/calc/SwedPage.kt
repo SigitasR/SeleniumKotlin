@@ -1,5 +1,7 @@
 package lt.swed.pages.calc
 
+import assertk.assertThat
+import assertk.assertions.isEqualTo
 import me.sig.framework.browser.BrowserFactory
 import me.sig.framework.pages.BasePage
 import org.openqa.selenium.WebElement
@@ -33,6 +35,12 @@ class SwedPage : BasePage() {
     @FindBy(css = "#slider2 > input")
     private lateinit var loanSliderHiddenValue: WebElement
 
+    @FindBy(id = "month-payment")
+    private lateinit var monthlyPayment: WebElement
+
+    @FindBy(id = "slider-financed")
+    private lateinit var maxLoan: WebElement
+
 
     fun clickCookiesAgreementYes(): SwedPage {
         cookiesAgreementYesButton.waitAndClick()
@@ -46,7 +54,7 @@ class SwedPage : BasePage() {
     }
 
     fun clickTwoOrMoreDependantsRadioButton(): SwedPage {
-        dependantsCheck.waitAndClick()
+        dependantsTwoOrMore.waitAndClick()
         return this
     }
 
@@ -67,6 +75,16 @@ class SwedPage : BasePage() {
         waitForElementToBeEnabled(loanTermDragHandle)
         dragSliderToStartingPosition(loanTermSliderTrack, loanTermDragHandle)
         dragUntilMonth(numberOfMonths)
+        return this
+    }
+
+    fun assertMonthlyPaymentText(expectedMonthlyPayment: String): SwedPage {
+        assertThat(monthlyPayment.text, name = "Monthly payment").isEqualTo(expectedMonthlyPayment)
+        return this
+    }
+
+    fun assertMaximumLoanAmountText(expectedMaxLoan: String): SwedPage {
+        assertThat(maxLoan.text, name = "Maximum loan amount").isEqualTo(expectedMaxLoan)
         return this
     }
 

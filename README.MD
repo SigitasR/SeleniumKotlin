@@ -13,5 +13,5 @@ To run tests use:
 
 Default url, browser and explicit wait timeout options can be set via commandline:
 
-`./gradlew clean test -DexplicitWaitTimeout=5 -Durl="https://someurl.org" -Dbrowser=Chrome`
+`./gradlew clean test -DexplicitWaitTimeout="5" -Durl="https://someurl.org" -Dbrowser=Chrome`
 

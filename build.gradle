@@ -10,13 +10,13 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.jetbrains.kotlin:kotlin-test-testng'
+//    testImplementation 'org.jetbrains.kotlin:kotlin-test-testng'
     compile 'org.jetbrains.kotlin:kotlin-test-testng'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
 
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.3.1'
 
-    testCompile group: 'com.willowtreeapps.assertk', name: 'assertk-jvm', version: '0.23'
+    compile group: 'com.willowtreeapps.assertk', name: 'assertk-jvm', version: '0.23'
 }
 
 test {

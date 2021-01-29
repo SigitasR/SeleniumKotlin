@@ -5,11 +5,9 @@ import org.testng.annotations.Test
 
 class SwedPageTest : BaseWebTest() {
 
-    lateinit var swedPage: SwedPage
-
     @Test
-    fun myTest() {
-        swedPage = SwedPage()
+    fun loanCalculatorTest() {
+        val swedPage = SwedPage()
 
         swedPage.openBaseUrl()
 
@@ -20,6 +18,8 @@ class SwedPageTest : BaseWebTest() {
             .enterIncome(1000)
             .enterLoanAmount(45000)
             .dragLoanTermHandleToNumberOfMonths(132)
+            .assertMaximumLoanAmountText("49739")
+            .assertMonthlyPaymentText("386")
     }
 
 }
