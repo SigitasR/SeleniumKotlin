@@ -36,45 +36,28 @@ class SwedPage(driver: WebDriver) : BasePage(driver) {
 
 
     fun clickCookiesAgreementYes(): SwedPage {
-        waitForJavaScript()
-        waitForElementToBeDisplayed(cookiesAgreementYesButton)
-        waitForElementToBeEnabled(cookiesAgreementYesButton)
-        cookiesAgreementYesButton.click()
+        cookiesAgreementYesButton.waitAndClick()
         waitForElementToBeNotDisplayed(cookiesAgreementYesButton)
         return this
     }
 
     fun clickDependantsCheckBox(): SwedPage {
-        waitForJavaScript()
-        waitForElementToBeDisplayed(dependantsCheck)
-        waitForElementToBeEnabled(dependantsCheck)
-        dependantsCheck.click()
+        dependantsCheck.waitAndClick()
         return this
     }
 
     fun clickTwoOrMoreDependantsRadioButton(): SwedPage {
-        waitForJavaScript()
-        waitForElementToBeDisplayed(dependantsTwoOrMore)
-        waitForElementToBeEnabled(dependantsTwoOrMore)
-        dependantsTwoOrMore.click()
+        dependantsCheck.waitAndClick()
         return this
     }
 
     fun enterIncome(incomeAmount: Int): SwedPage {
-        waitForJavaScript()
-        waitForElementToBeEnabled(incomeInput)
-        incomeInput.clear()
-        incomeInput.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.BACK_SPACE)
-        incomeInput.sendKeys(incomeAmount.toString())
+        incomeInput.clearAndType(incomeAmount.toString())
         return this
     }
 
     fun enterLoanAmount(loanAmount: Int): SwedPage {
-        waitForJavaScript()
-        waitForElementToBeEnabled(loanAmountInputField)
-        loanAmountInputField.clear()
-        loanAmountInputField.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.BACK_SPACE)
-        loanAmountInputField.sendKeys(loanAmount.toString())
+        loanAmountInputField.clearAndType(loanAmount.toString())
         return this
     }
 

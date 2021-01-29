@@ -2,6 +2,7 @@ package me.sig.framework.pages
 
 import me.sig.framework.settings.EXPLICIT_WAIT_TIMEOUT
 import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.PageFactory
@@ -55,6 +56,21 @@ open class BaseWebOperations(val driver: WebDriver) {
             "arguments[0].scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });",
             element
         )
+    }
+
+    fun WebElement.waitAndClick() {
+        waitForJavaScript()
+        waitForElementToBeDisplayed(this)
+        waitForElementToBeEnabled(this)
+        this.click()
+    }
+
+    fun WebElement.clearAndType(text: String) {
+        waitForJavaScript()
+        waitForElementToBeDisplayed(this)
+        waitForElementToBeEnabled(this)
+        this.sendKeys(Keys.chord(Keys.COMMAND, "a"), Keys.BACK_SPACE)
+        this.sendKeys(text)
     }
 
     private fun createWait() = WebDriverWait(driver, EXPLICIT_WAIT_TIMEOUT)
