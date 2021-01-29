@@ -31,6 +31,11 @@ open class BaseWebOperations(val driver: WebDriver) {
         wait.until(ExpectedConditions.elementToBeClickable(element))
     }
 
+    fun waitForElement(element: WebElement) {
+        waitForElementToBeDisplayed(element)
+        waitForElementToBeEnabled(element)
+    }
+
     fun waitForJavaScript() {
         val wait = createWait()
         val js = driver as JavascriptExecutor
@@ -61,15 +66,13 @@ open class BaseWebOperations(val driver: WebDriver) {
 
     fun WebElement.waitAndClick() {
         waitForJavaScript()
-        waitForElementToBeDisplayed(this)
-        waitForElementToBeEnabled(this)
+        waitForElement(this)
         this.click()
     }
 
     fun WebElement.clearAndType(text: String) {
         waitForJavaScript()
-        waitForElementToBeDisplayed(this)
-        waitForElementToBeEnabled(this)
+        waitForElement(this)
 
         if (isMacOs()) {
             this.sendKeys(
