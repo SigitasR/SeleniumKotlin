@@ -4,43 +4,23 @@ import assertk.assertThat
 import assertk.assertions.isEqualTo
 import me.sig.framework.browser.BrowserFactory
 import me.sig.framework.pages.BasePage
+import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
-import org.openqa.selenium.support.FindBy
 
 
 class SwedPage : BasePage() {
 
-    @FindBy(css = "button[data-wt-label='Accept all cookies']")
-    private lateinit var cookiesAgreementYesButton: WebElement
-
-    @FindBy(css = "label[for='dependantsCheck']")
-    private lateinit var dependantsCheck: WebElement
-
-    @FindBy(css = "label[for='dependants2']")
-    private lateinit var dependantsTwoOrMore: WebElement
-
-    @FindBy(id = "income")
-    private lateinit var incomeInput: WebElement
-
-    @FindBy(css = "#slider1 > div.ui-slider__field > input")
-    private lateinit var loanAmountInputField: WebElement
-
-    @FindBy(css = "#slider2 > div.ui-slider__bar > button")
-    private lateinit var loanTermDragHandle: WebElement
-
-    @FindBy(css = "#slider2 > div.ui-slider__bar > div.ui-slider__track")
-    private lateinit var loanTermSliderTrack: WebElement
-
-    @FindBy(css = "#slider2 > input")
-    private lateinit var loanSliderHiddenValue: WebElement
-
-    @FindBy(id = "month-payment")
-    private lateinit var monthlyPayment: WebElement
-
-    @FindBy(id = "slider-financed")
-    private lateinit var maxLoan: WebElement
-
+    private val cookiesAgreementYesButton get() = driver.findElement(By.cssSelector("button[data-wt-label='Accept all cookies']"))
+    private val dependantsCheck get() = driver.findElement(By.cssSelector("label[for='dependantsCheck']"))
+    private val dependantsTwoOrMore get() = driver.findElement(By.cssSelector("label[for='dependants2']"))
+    private val incomeInput get() = driver.findElement(By.id("income"))
+    private val loanAmountInputField get() = driver.findElement(By.cssSelector("#slider1 > div.ui-slider__field > input"))
+    private val loanTermDragHandle get() = driver.findElement(By.cssSelector("#slider2 > div.ui-slider__bar > button"))
+    private val loanTermSliderTrack get() = driver.findElement(By.cssSelector("#slider2 > div.ui-slider__bar > div.ui-slider__track"))
+    private val loanSliderHiddenValue get() = driver.findElement(By.cssSelector("#slider2 > input"))
+    private val monthlyPayment get() = driver.findElement(By.id("month-payment"))
+    private val maxLoan get() = driver.findElement(By.id("slider-financed"))
 
     fun clickCookiesAgreementYes(): SwedPage {
         cookiesAgreementYesButton.waitAndClick()
